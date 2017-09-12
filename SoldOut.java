@@ -1,10 +1,10 @@
 package GumBall2;
 
-public class SoldOutStateAll implements State {
-    GumballMachineAllCoin all;
+public class SoldOut implements State {
+    GumballMachine gumballMachine;
 
-    public SoldOutStateAll(GumballMachineAllCoin all) {
-        this.all = all;
+    public SoldOut(GumballMachine gumballMachine) {
+        this.gumballMachine = gumballMachine;
     }
 
     public void insertCoin(int coin) {
@@ -12,12 +12,7 @@ public class SoldOutStateAll implements State {
     }
 
     public void ejectCoin() {
-        if (all.cents == 0) {
-            System.out.println("You can't eject, you haven't inserted a coin yet");
-        } else {
-            all.cents = 0;
-            System.out.println("Coins returned");
-        }
+        System.out.println("You can't eject, you haven't inserted a coin yet");
     }
 
     public void turnCrank() {
@@ -31,7 +26,4 @@ public class SoldOutStateAll implements State {
     public String toString() {
         return "sold out";
     }
-
-    public void insertQuarter() {}
-    public void ejectQuarter() {}
 }

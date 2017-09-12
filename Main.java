@@ -1,33 +1,31 @@
 package GumBall2;
 
-import GumBall.GumballMachine;
-
 public class Main {
     public static void main(String[] args) {
         //Model 1: One Quarter machine
-        GumballMachineOneQuarter OneQuarter = new GumballMachineOneQuarter(5);
+        GumballMachine OneQuarter = new GumballMachine(5, "one");
 
         System.out.println(OneQuarter);
 
-        OneQuarter.insertQuarter();
+        OneQuarter.insertCoin(25);
         OneQuarter.turnCrank();
 
         System.out.println(OneQuarter);
 
         //Model 2: Two Quarter machine
-        GumballMachineTwoQuarter TwoQuarter = new GumballMachineTwoQuarter(5);
+        GumballMachine TwoQuarter = new GumballMachine(5, "two");
 
         System.out.println(TwoQuarter);
 
-        TwoQuarter.insertQuarter();
+        TwoQuarter.insertCoin(25);
         TwoQuarter.turnCrank();
-        TwoQuarter.insertQuarter();
+        TwoQuarter.insertCoin(25);
         TwoQuarter.turnCrank();
 
         System.out.println(TwoQuarter);
 
         //Model 3: All coins machine
-        GumballMachineAllCoin all = new GumballMachineAllCoin(5);
+        GumballMachine all = new GumballMachine(5, "all");
         System.out.println(all);
 
         all.insertCoin(25);
