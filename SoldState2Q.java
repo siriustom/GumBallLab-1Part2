@@ -1,10 +1,10 @@
 package GumBall2;
 
-public class SoldState implements State {
-    GumballMachineOneQuarter OneQuarter;
+public class SoldState2Q implements State {
+    GumballMachineTwoQuarter TwoQuarter;
 
-    public SoldState(GumballMachineOneQuarter OneQuarter) {
-        this.OneQuarter = OneQuarter;
+    public SoldState2Q(GumballMachineTwoQuarter TwoQuarter) {
+        this.TwoQuarter = TwoQuarter;
     }
 
     public void insertQuarter() {
@@ -20,12 +20,12 @@ public class SoldState implements State {
     }
 
     public void dispense() {
-        OneQuarter.releaseBall();
-        if (OneQuarter.getCount() > 0) {
-            OneQuarter.setState(OneQuarter.getNoQuarterState());
+        TwoQuarter.releaseBall();
+        if (TwoQuarter.getCount() > 0) {
+            TwoQuarter.setState(TwoQuarter.getNo2QuarterState());
         } else {
             System.out.println("Oops, out of gumballs!");
-            OneQuarter.setState(OneQuarter.getSoldOutState());
+            TwoQuarter.setState(TwoQuarter.getSoldOutState2Q());
         }
     }
 

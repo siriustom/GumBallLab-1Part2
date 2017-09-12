@@ -1,31 +1,42 @@
 package GumBall2;
 
+import GumBall.GumballMachine;
+
 public class Main {
     public static void main(String[] args) {
-        GumballMachine gumballMachine = new GumballMachine(5);
+        //Model 1: One Quarter machine
+        GumballMachineOneQuarter OneQuarter = new GumballMachineOneQuarter(5);
 
-        System.out.println(gumballMachine);//1 quarter
+        System.out.println(OneQuarter);
 
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
+        OneQuarter.insertQuarter();
+        OneQuarter.turnCrank();
 
-        System.out.println(gumballMachine);//2 quarters
+        System.out.println(OneQuarter);
 
-        gumballMachine.insertQuarter();
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
+        //Model 2: Two Quarter machine
+        GumballMachineTwoQuarter TwoQuarter = new GumballMachineTwoQuarter(5);
 
-        System.out.println(gumballMachine);//50 cents all
+        System.out.println(TwoQuarter);
 
-        gumballMachine.insertQuarter();
-        gumballMachine.insertCoin(10);
-        gumballMachine.insertCoin(10);
-        gumballMachine.turnCrank();
-        gumballMachine.insertCoin(10);
-        gumballMachine.insertCoin(10);
-        gumballMachine.insertCoin(10);
-        gumballMachine.turnCrank();
+        TwoQuarter.insertQuarter();
+        TwoQuarter.turnCrank();
+        TwoQuarter.insertQuarter();
+        TwoQuarter.turnCrank();
 
-        System.out.println(gumballMachine);
+        System.out.println(TwoQuarter);
+
+        //Model 3: All coins machine
+        GumballMachineAllCoin all = new GumballMachineAllCoin(5);
+        System.out.println(all);
+
+        all.insertCoin(25);
+        all.turnCrank();
+        all.insertCoin(10);
+        all.insertCoin(10);
+        all.insertCoin(5);
+        all.turnCrank();
+
+        System.out.println(all);
     }
 }

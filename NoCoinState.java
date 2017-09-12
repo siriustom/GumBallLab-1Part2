@@ -1,34 +1,18 @@
 package GumBall2;
 
 public class NoCoinState implements State {
-    GumballMachine gumballMachine;
+    GumballMachineAllCoin all;
 
-    public NoCoinState(GumballMachine gumballMachine) {
-        this.gumballMachine = gumballMachine;
+    public NoCoinState(GumballMachineAllCoin all) {
+        this.all = all;
     }
 
-    public void insertQuarter() {
-        System.out.println("You inserted a quarter");
-        gumballMachine.numOfQuarter++;
-        gumballMachine.setState(gumballMachine.getHasQuarterState());
-    }
+    public void insertQuarter() {}
 
-    public void insertCoin(int coin) {
-        System.out.println("You inserted" + coin + "cents");
-        gumballMachine.otherCents += coin;
-        gumballMachine.setState(gumballMachine.getOtherLessThan50State());
-    }
-
-    public void ejectQuarter() {
-        System.out.println("You haven't inserted a quarter");
-    }
-
-    public void ejectCoin() {
-        System.out.println("You haven't inserted any coins");
-    }
+    public void ejectQuarter() {}
 
     public void turnCrank() {
-        System.out.println("You turned, but there's no quarter or coin");
+        System.out.println("You turned, but there's no quarter");
     }
 
     public void dispense() {
@@ -36,6 +20,19 @@ public class NoCoinState implements State {
     }
 
     public String toString() {
-        return "waiting for quarter or other coin";
+        return "waiting for coin";
+    }
+
+    public void insertCoin(int coin) {
+        all.cents += coin;
+        if (all.cents < 50) {
+            all.setState(all.getLess50State());
+        } else {
+            all.setState(all.getEqual50State());
+        }
+    }
+
+    public void ejectCoin() {
+        System.out.println("You haven't inserted a coin");
     }
 }

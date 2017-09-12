@@ -1,33 +1,21 @@
 package GumBall2;
 
 public class Equal50State implements State {
-    GumballMachine gumballMachine;
+    GumballMachineAllCoin all;
 
-    public Equal50State(GumballMachine gumballMachine) {
-        this.gumballMachine = gumballMachine;
+    public Equal50State(GumballMachineAllCoin all) {
+        this.all = all;
     }
 
-    public void insertQuarter() {
-        System.out.println("You've already paid 50 cents");
-    }
+    public void insertQuarter() {}
 
-    public void insertCoin(int coin) {
-        System.out.println("You've already paid 50 cents");
-    }
-
-    public void ejectQuarter() {
-        gumballMachine.numOfQuarter = 0;
-        System.out.println("Quarter returned");
-    }
-
-    public void ejectCoin() {
-        gumballMachine.otherCents = 0;
-        System.out.println("Coins returned");
-    }
+    public void ejectQuarter() {}
 
     public void turnCrank() {
         System.out.println("You turned...");
-        gumballMachine.setState(gumballMachine.getSoldState());
+        all.cents -= 50;
+        this.ejectCoin();
+        all.setState(all.getSoldStateAll());
     }
 
     public void dispense() {
@@ -36,5 +24,13 @@ public class Equal50State implements State {
 
     public String toString() {
         return "waiting for turn of crank";
+    }
+
+    public void insertCoin(int coin) {
+        System.out.println("You've already inserted 50 cents");
+    }
+    public void ejectCoin() {
+        all.cents = 0;
+        all.setState(all.getNoCoinState());
     }
 }

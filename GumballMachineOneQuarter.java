@@ -1,33 +1,23 @@
 package GumBall2;
 
-public class GumballMachine {
+public class GumballMachineOneQuarter {
     State soldOutState;
-    State noCoinState;
+    State noQuarterState;
     State hasQuarterState;
-    State otherLessThan50State;
-    State lessThan50HasQuarterState;
-    State equal50State;
     State soldState;
 
     State state = soldOutState;
     int count = 0;
-    int otherCents;
-    int numOfQuarter;
 
-    public GumballMachine(int numberGumballs) {
+    public GumballMachineOneQuarter(int numberGumballs) {
         soldOutState = new SoldOutState(this);
-        noCoinState = new NoCoinState(this);
+        noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
-        otherLessThan50State = new OtherLessThan50State(this);
-        lessThan50HasQuarterState = new LessThan50HasQuarterState(this);
-        equal50State = new Equal50State(this);
         soldState = new SoldState(this);
 
-        this.otherCents = 0;
-        this.numOfQuarter = 0;
         this.count = numberGumballs;
         if (numberGumballs > 0) {
-            state = noCoinState;
+            state = noQuarterState;
         }
     }
 
@@ -35,16 +25,8 @@ public class GumballMachine {
         state.insertQuarter();
     }
 
-    public void insertCoin(int coin) {
-        state.insertCoin(coin);
-    }
-
     public void ejectQuarter() {
         state.ejectQuarter();
-    }
-
-    public void ejectCoin() {
-        state.ejectCoin();
     }
 
     public void turnCrank() {
@@ -56,10 +38,10 @@ public class GumballMachine {
         this.state = state;
     }
 
-    void releaseBall() {
+    public void releaseBall() {
+        System.out.println("A gumball comes rolling out the slot...");
         if (count != 0) {
             count = count - 1;
-            System.out.println("A gumball comes rolling out the slot...");
         }
     }
 
@@ -69,7 +51,7 @@ public class GumballMachine {
 
     void refill(int count) {
         this.count = count;
-        state = noCoinState;
+        state = noQuarterState;
     }
 
     public State getState() {
@@ -80,24 +62,12 @@ public class GumballMachine {
         return soldOutState;
     }
 
-    public State getNoCoinState() {
-        return noCoinState;
+    public State getNoQuarterState() {
+        return noQuarterState;
     }
 
     public State getHasQuarterState() {
         return hasQuarterState;
-    }
-
-    public State getOtherLessThan50State() {
-        return otherLessThan50State;
-    }
-
-    public State getLessThan50HasQuarterState() {
-        return lessThan50HasQuarterState;
-    }
-
-    public State getEqual50State() {
-        return equal50State;
     }
 
     public State getSoldState() {

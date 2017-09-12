@@ -1,10 +1,10 @@
 package GumBall2;
 
-public class HasQuarterState implements State {
-    GumballMachineOneQuarter OneQuarter;
+public class Has2QuarterState implements State {
+    GumballMachineTwoQuarter TwoQuarter;
 
-    public HasQuarterState(GumballMachineOneQuarter OneQuarter) {
-        this.OneQuarter = OneQuarter;
+    public Has2QuarterState(GumballMachineTwoQuarter TwoQuarter) {
+        this.TwoQuarter = TwoQuarter;
     }
 
     public void insertQuarter() {
@@ -13,12 +13,12 @@ public class HasQuarterState implements State {
 
     public void ejectQuarter() {
         System.out.println("Quarter returned");
-        OneQuarter.setState(OneQuarter.getNoQuarterState());
+        TwoQuarter.setState(TwoQuarter.getNo2QuarterState());
     }
 
     public void turnCrank() {
         System.out.println("You turned...");
-        OneQuarter.setState(OneQuarter.getSoldState());
+        TwoQuarter.setState(TwoQuarter.getSoldState2Q());
     }
 
     public void dispense() {
@@ -28,6 +28,7 @@ public class HasQuarterState implements State {
     public String toString() {
         return "waiting for turn of crank";
     }
+
     public void insertCoin(int coin) {}
     public void ejectCoin() {}
 }

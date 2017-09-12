@@ -1,10 +1,10 @@
 package GumBall2;
 
-public class SoldOutState implements State {
-    GumballMachineOneQuarter OneQuarter;
+public class SoldOutState2Q implements State {
+    GumballMachineTwoQuarter TwoQuarter;
 
-    public SoldOutState(GumballMachineOneQuarter OneQuarter) {
-        this.OneQuarter = OneQuarter;
+    public SoldOutState2Q(GumballMachineTwoQuarter TwoQuarter) {
+        this.TwoQuarter = TwoQuarter;
     }
 
     public void insertQuarter() {
